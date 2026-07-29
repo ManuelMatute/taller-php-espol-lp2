@@ -5,6 +5,12 @@ require "usuario.php";
 $cedula = $_POST['cedula'];
 $nombre = $_POST['nombre'];
 
+$clave = $_POST['clave'] ?? '';
+
+if (strlen($clave) < 6) {
+    exit("La contraseña debe tener mínimo 6 caracteres.");
+}
+
 if (validar($cedula)) {
     header("Location: ingreso.php");
     exit;
@@ -15,7 +21,7 @@ $datos = [
     'nombre'       => $nombre,
     'estado_civil' => $_POST['estado_civil'],
     'correo'       => $_POST['correo'],
-    'clave_hash'   => password_hash($_POST['clave'], PASSWORD_DEFAULT)
+    'clave_hash' => password_hash($clave, PASSWORD_DEFAULT)
 ];
 
 guardar($datos);

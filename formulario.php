@@ -26,7 +26,12 @@
         <input type="email" name="correo" required><br>
  
         <label>Clave:</label>
-        <input type="password" name="clave" required><br>
+        <input
+            type="password"
+            name="clave"
+            minlength="6"
+            required
+        >
  
         <input type="submit" value="Registrar">
         <input type="reset" value="Resetear">
